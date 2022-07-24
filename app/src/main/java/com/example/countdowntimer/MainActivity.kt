@@ -9,32 +9,64 @@ import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var timer_tv: TextView
-    lateinit var start_btn: Button
-    lateinit var reset_tv: TextView
+    private var timer : CountDownTimer? = null
+
+    var START_TIME_IN_MILLIS: Long = 25 * 60 * 1000
+    var remainingTime: Long = START_TIME_IN_MILLIS
+
+    private lateinit var timer_tv: TextView
+    private lateinit var start_btn: Button
+    private lateinit var reset_tv: TextView
+    private lateinit var title_tv: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         init()
+
         start_btn.setOnClickListener {
-            var timer = object : CountDownTimer(25 * 60 * 1000, 1*1000) {
-
-                override fun onTick(timer: Long) {
-                    timer_tv.text = timer.toString()
-                }
-
-                override fun onFinish() {
-                    Toast.makeText(this@MainActivity,"finish",Toast.LENGTH_LONG).show()
-                }
-            }.start()
+            startTimer()
+            title_tv.text = resources.getText(R.string.keep_going)
+        }
+        reset_tv.setOnClickListener {
+            resetTimer()
         }
     }
 
-    fun init() {
+    private fun startTimer() {
+         timer = object : CountDownTimer(START_TIME_IN_MILLIS, 1 * 1000) {
+
+            override fun onTick(timeLeft: Long) {
+                timer_tv.text = timeLeft.toString()
+                remainingTime = timeLeft
+                updateTimerText()
+            }
+
+            override fun onFinish() {
+                Toast.makeText(this@MainActivity, "finish", Toast.LENGTH_LONG).show()
+            }
+        }.start()
+    }
+
+    private fun resetTimer(){
+        timer?.cancel()
+        remainingTime = START_TIME_IN_MILLIS
+        updateTimerText()
+        title_tv.text = resources.getText(R.string.take)
+    }
+
+    private fun updateTimerText() {
+        val minute = remainingTime.div(1000).div(60)
+        val second = remainingTime.div(1000) % 60
+        val formattedTime = String.format("%02d:%02d", minute, second)
+        timer_tv.text = formattedTime
+    }
+
+    private fun init() {
         timer_tv = findViewById(R.id.timer_tv)
         start_btn = findViewById(R.id.start_btn)
         reset_tv = findViewById(R.id.reset_tv)
+        title_tv = findViewById(R.id.title_tv)
     }
 }
 
