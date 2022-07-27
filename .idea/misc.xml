@@ -3,8 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Mohamed Elgohary/AndroidStudioProjects/CountDownTimer/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.103" />
+        <entry key="..\:/Users/Mohamed Elgohary/AndroidStudioProjects/CountDownTimer/app/src/main/res/drawable/circle.xml" value="0.103" />
+        <entry key="..\:/Users/Mohamed Elgohary/AndroidStudioProjects/CountDownTimer/app/src/main/res/drawable/circular_pb.xml" value="0.1" />
+        <entry key="..\:/Users/Mohamed Elgohary/AndroidStudioProjects/CountDownTimer/app/src/main/res/drawable/progressbar.xml" value="0.1065" />
         <entry key="..\:/Users/Mohamed Elgohary/AndroidStudioProjects/CountDownTimer/app/src/main/res/drawable/rounded_background.xml" value="0.1" />
-        <entry key="..\:/Users/Mohamed Elgohary/AndroidStudioProjects/CountDownTimer/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/Mohamed Elgohary/AndroidStudioProjects/CountDownTimer/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/Mohamed Elgohary/AndroidStudioProjects/CountDownTimer/app/src/main/res/layout/circle.xml" value="0.22708333333333333" />
       </map>
     </option>
   </component>

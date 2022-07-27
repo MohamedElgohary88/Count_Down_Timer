@@ -4,12 +4,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.widget.Button
+import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
 
     private var timer : CountDownTimer? = null
+    private var isTimerRunning = false
 
     var START_TIME_IN_MILLIS: Long = 25 * 60 * 1000
     var remainingTime: Long = START_TIME_IN_MILLIS
@@ -18,6 +20,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var start_btn: Button
     private lateinit var reset_tv: TextView
     private lateinit var title_tv: TextView
+    private lateinit var pb :ProgressBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,12 +28,15 @@ class MainActivity : AppCompatActivity() {
         init()
 
         start_btn.setOnClickListener {
-            startTimer()
-            title_tv.text = resources.getText(R.string.keep_going)
+            if (isTimerRunning == false){
+                startTimer()
+                title_tv.text = resources.getText(R.string.keep_going)
+            }
         }
         reset_tv.setOnClickListener {
             resetTimer()
         }
+
     }
 
     private fun startTimer() {
@@ -40,12 +46,17 @@ class MainActivity : AppCompatActivity() {
                 timer_tv.text = timeLeft.toString()
                 remainingTime = timeLeft
                 updateTimerText()
+                pb.progress = remainingTime.toDouble().div(START_TIME_IN_MILLIS).toDouble().times(100).toInt()
             }
 
             override fun onFinish() {
                 Toast.makeText(this@MainActivity, "finish", Toast.LENGTH_LONG).show()
+                isTimerRunning = false
             }
         }.start()
+
+        isTimerRunning = true
+
     }
 
     private fun resetTimer(){
@@ -53,6 +64,8 @@ class MainActivity : AppCompatActivity() {
         remainingTime = START_TIME_IN_MILLIS
         updateTimerText()
         title_tv.text = resources.getText(R.string.take)
+        isTimerRunning = false
+        pb.progress = 100
     }
 
     private fun updateTimerText() {
@@ -67,6 +80,7 @@ class MainActivity : AppCompatActivity() {
         start_btn = findViewById(R.id.start_btn)
         reset_tv = findViewById(R.id.reset_tv)
         title_tv = findViewById(R.id.title_tv)
+        pb = findViewById(R.id.progressBar)
     }
 }
 
