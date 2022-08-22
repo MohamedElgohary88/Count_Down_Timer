@@ -11,9 +11,9 @@
         android:id="@+id/title_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:layout_margin="40dp"
+        android:layout_marginTop="8dp"
         android:text="@string/take"
+        android:textColor="@color/white"
         android:textSize="24sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -23,27 +23,28 @@
         android:id="@+id/timer_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="192dp"
-        android:textColor="@color/white"
         android:text="@string/time"
-        android:textSize="56sp"
-        app:layout_constraintHorizontal_bias="0.498"
+        android:textColor="@color/white"
+        android:textSize="46sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title_tv" />
+        app:layout_constraintTop_toBottomOf="@+id/title_tv"
+        app:layout_constraintVertical_bias="0.287" />
 
     <Button
         android:id="@+id/start_btn"
-        android:layout_width="140sp"
+        android:layout_width="120sp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="140dp"
-        android:textSize="18sp"
-        android:text="@string/start"
         android:background="@drawable/rounded_background"
+        android:text="@string/start"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/timer_tv" />
+        app:layout_constraintTop_toBottomOf="@+id/timer_tv"
+        app:layout_constraintVertical_bias="0.537" />
 
     <TextView
         android:id="@+id/reset_tv"
@@ -62,14 +63,16 @@
     <androidx.core.widget.ContentLoadingProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressDrawable"
-        android:layout_width="330dp"
-        android:layout_height="330dp"
+        android:layout_width="230dp"
+        android:layout_height="230dp"
         android:indeterminate="false"
         android:progressDrawable="@drawable/circular_pb"
         app:layout_constraintBottom_toBottomOf="@+id/timer_tv"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.499"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/timer_tv" />
+        app:layout_constraintTop_toTopOf="@+id/timer_tv"
+        app:layout_constraintVertical_bias="0.526" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
